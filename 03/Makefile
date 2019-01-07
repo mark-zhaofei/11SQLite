@@ -12,6 +12,9 @@ LDFLAGS  += -ldl
 
 all:install $(ELF) 
 
+CROSS = arm-none-linux-gnueabi-
+CC = $(CROSS)gcc
+
 install:sqlite3.o
 	$(CC) -shared -fPIC -o libsqlite3.so $^
 
@@ -27,4 +30,4 @@ clean:
 	-@echo "Done."
 
 distclean:clean
-	-@$(RM) *.so
+	-@$(RM) *.so *.o
